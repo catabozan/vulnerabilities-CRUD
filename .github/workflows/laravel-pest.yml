@@ -8,6 +8,8 @@ jobs:
       APP_ENV: testing
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: Start MariaDB
         uses: getong/mariadb-action@v1.1
         with:
@@ -16,16 +18,20 @@ jobs:
           mysql database: "testing_main" # Optional, default value is "test". The specified database which will be create
           mysql root password: "github-testing" # Required if "mysql user" exists. The password for the "mysql user"
 
-      - name: Start Redis
-        uses: supercharge/redis-github-action@1.4.0
-        with:
-          redis-version: 7
+      # - name: Start Redis
+      #   uses: supercharge/redis-github-action@1.4.0
+      #   with:
+      #     redis-version: 7
 
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "8.1"
 
-      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm run build
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
