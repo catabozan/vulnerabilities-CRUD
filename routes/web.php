@@ -25,6 +25,9 @@ Route::get('/dashboard', function () {
 Route::prefix('vulnerability')->middleware(['auth'])->group(function () {
     Route::post('/', [VulnerabilityController::class, 'store'])
         ->name('vulnerability.store');
+
+    Route::patch('/{vulnerability}', [VulnerabilityController::class, 'update'])
+        ->name('vulnerability.update');
 });
 
 require __DIR__.'/auth.php';
