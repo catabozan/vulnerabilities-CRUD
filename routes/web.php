@@ -28,6 +28,9 @@ Route::prefix('vulnerability')->middleware(['auth'])->group(function () {
 
     Route::patch('/{vulnerability}', [VulnerabilityController::class, 'update'])
         ->name('vulnerability.update');
+
+    Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])
+        ->name('vulnerability.destroy');
 });
 
 require __DIR__.'/auth.php';
