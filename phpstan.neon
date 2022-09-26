@@ -9,10 +9,12 @@ parameters:
     # Level 9 is the highest level
     level: 9
 
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'
 #
 #    excludePaths:
 #        - ./*/*/FileToBeExcluded.php
 #
-#    checkMissingIterableValueType: false
