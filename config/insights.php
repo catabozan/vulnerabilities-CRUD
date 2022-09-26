@@ -8,6 +8,7 @@ use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenNormalClasses;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenPrivateMethods;
 use NunoMaduro\PhpInsights\Domain\Insights\ForbiddenTraits;
 use NunoMaduro\PhpInsights\Domain\Metrics\Architecture\Classes;
+use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
 use SlevomatCodingStandard\Sniffs\Commenting\UselessFunctionDocCommentSniff;
 use SlevomatCodingStandard\Sniffs\Namespaces\AlphabeticallySortedUsesSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\DeclareStrictTypesSniff;
@@ -15,8 +16,6 @@ use SlevomatCodingStandard\Sniffs\TypeHints\DisallowMixedTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ParameterTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\PropertyTypeHintSniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
-use PHP_CodeSniffer\Standards\Squiz\Sniffs\Commenting\EmptyCatchCommentSniff;
-use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
 
 return [
 
@@ -95,7 +94,7 @@ return [
         ],
         LineLengthSniff::class => [
             'lineLimit' => 100,
-        ]
+        ],
     ],
 
     /*
@@ -110,11 +109,11 @@ return [
     */
 
     'requirements' => [
-       'min-quality' => 85,
-       'min-complexity' => 85,
-       'min-architecture' => 85,
-       'min-style' => 85,
-       'disable-security-check' => false,
+        'min-quality' => 85,
+        'min-complexity' => 85,
+        'min-architecture' => 85,
+        'min-style' => 85,
+        'disable-security-check' => false,
     ],
 
     /*
