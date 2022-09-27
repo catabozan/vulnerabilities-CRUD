@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
 class PasswordConfirmationTest extends TestCase
@@ -34,6 +35,8 @@ class PasswordConfirmationTest extends TestCase
     public function test_password_is_not_confirmed_with_invalid_password()
     {
         $user = User::factory()->create();
+
+        $this->expectException(ValidationException::class);
 
         $response = $this->actingAs($user)->post('/confirm-password', [
             'password' => 'wrong-password',

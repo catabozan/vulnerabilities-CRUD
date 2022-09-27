@@ -5,6 +5,7 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -34,6 +35,8 @@ class AuthenticationTest extends TestCase
     public function test_users_can_not_authenticate_with_invalid_password()
     {
         $user = User::factory()->create();
+
+        $this->expectException(ValidationException::class);
 
         $this->post('/login', [
             'email' => $user->email,
