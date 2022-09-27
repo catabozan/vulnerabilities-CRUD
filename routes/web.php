@@ -33,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', [VulnerabilityController::class, 'store'])
             ->name('vulnerability.store');
 
+        Route::get('/edit/{vulnerability}', [VulnerabilityController::class, 'edit'])
+            ->name('vulnerability.edit');
+
         Route::patch('/{vulnerability}', [VulnerabilityController::class, 'update'])
             ->name('vulnerability.update');
 

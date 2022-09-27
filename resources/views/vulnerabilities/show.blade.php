@@ -26,8 +26,13 @@
         @auth
             @if (Auth::user()->is($vulnerability->user))
                 <div class="mt-12">
+                    <a href="{{ route('vulnerability.edit', ['vulnerability' => $vulnerability->getKey()]) }}"
+                        class="bg-sky-400 py-2 px-4 rounded mr-2">
+                        Edit
+                    </a>
+
                     <form action="{{ route('vulnerability.destroy', ['vulnerability' => $vulnerability->getKey()]) }}"
-                        method="POST">
+                        method="POST" class="inline">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="bg-red-400 py-2 px-4 rounded">Delete</button>
