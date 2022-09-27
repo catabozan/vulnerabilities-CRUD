@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [VulnerabilityController::class, 'index'])
     ->name('home');
 
+Route::get('/vulnerability/{vulnerability}', [VulnerabilityController::class, 'show'])
+    ->name('vulnerability.show');
+
 Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [VulnerabilityController::class, 'index'])
