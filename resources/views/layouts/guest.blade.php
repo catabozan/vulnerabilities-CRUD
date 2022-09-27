@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    @include('layouts.guest-navigation')
+    @include('layouts.navigation')
 
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
