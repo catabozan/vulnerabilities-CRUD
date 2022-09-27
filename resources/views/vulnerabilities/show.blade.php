@@ -22,5 +22,18 @@
         </div>
         <h2 class="font-semibold text-xl text-gray-800 mt-4">Description</h2>
         <p> {{ $vulnerability->description }} </p>
+
+        @auth
+            @if (Auth::user()->is($vulnerability->user))
+                <div class="mt-12">
+                    <form action="{{ route('vulnerability.destroy', ['vulnerability' => $vulnerability->getKey()]) }}"
+                        method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="bg-red-400 py-2 px-4 rounded">Delete</button>
+                    </form>
+                </div>
+            @endif
+        @endauth
     </div>
 </x-app-layout>
