@@ -18,6 +18,7 @@ Route::get('/', [VulnerabilityController::class, 'index'])
     ->name('home');
 
 Route::get('/vulnerability/{vulnerability}', [VulnerabilityController::class, 'show'])
+    ->where('vulnerability', '[0-9]+')
     ->name('vulnerability.show');
 
 Route::middleware(['auth'])->group(function () {
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('vulnerability')->group(function () {
+        Route::get('/new', [VulnerabilityController::class, 'create'])
+            ->name('vulnerability.create');
+
         Route::post('/', [VulnerabilityController::class, 'store'])
             ->name('vulnerability.store');
 
