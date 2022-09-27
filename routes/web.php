@@ -18,19 +18,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [VulnerabilityController::class, 'index'])
+            ->name('dashboard');
 
-Route::prefix('vulnerability')->middleware(['auth'])->group(function () {
-    Route::post('/', [VulnerabilityController::class, 'store'])
-        ->name('vulnerability.store');
+        Route::get('/my-vulnerabilities', [VulnerabilityController::class, 'indexForUser'])
+            ->name('dashboard.my-vulnerabilities');
+    });
 
-    Route::patch('/{vulnerability}', [VulnerabilityController::class, 'update'])
-        ->name('vulnerability.update');
+    Route::prefix('vulnerability')->group(function () {
+        Route::post('/', [VulnerabilityController::class, 'store'])
+            ->name('vulnerability.store');
 
-    Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])
-        ->name('vulnerability.destroy');
+        Route::patch('/{vulnerability}', [VulnerabilityController::class, 'update'])
+            ->name('vulnerability.update');
+
+        Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])
+            ->name('vulnerability.destroy');
+    });
 });
+
+
 
 require __DIR__.'/auth.php';
