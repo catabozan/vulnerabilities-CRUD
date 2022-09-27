@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VulnerabilityController::class, 'indexForGuest'])
+    ->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->group(function () {
