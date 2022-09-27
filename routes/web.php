@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [VulnerabilityController::class, 'indexForGuest'])
+Route::get('/', [VulnerabilityController::class, 'index'])
     ->name('home');
 
 Route::middleware(['auth'])->group(function () {
