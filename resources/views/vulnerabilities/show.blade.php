@@ -7,7 +7,9 @@
 
     <div class="container bg-white rounded-lg mt-8 mx-auto p-8">
         <div class="flex justify-between">
-            <span class="text-slate-400">Submitted by: {{ $vulnerability->user->name }}</span>
+            <span class="text-slate-400">
+                Submitted by: {{ $vulnerability->user->name }} | {{ $vulnerability->created_at->diffForHumans() }}
+            </span>
             <div class="inline min-w-fit">
                 <x-badge :class="$vulnerability->threat_level === 0
                     ? 'bg-lime-400'
