@@ -20,8 +20,8 @@
                 </x-badge>
             </div>
         </div>
-        <h2 class="font-semibold text-xl text-gray-800 mt-4">Description</h2>
-        <p> {{ $vulnerability->description }} </p>
+        <h2 class="font-semibold text-xl text-gray-800 mt-4 mb-2">Description</h2>
+        <pre class="break-words whitespace-pre-wrap"> {{ $vulnerability->description }} </pre>
 
         @auth
             @if (Auth::user()->is($vulnerability->user))
